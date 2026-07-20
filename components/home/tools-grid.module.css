@@ -1,0 +1,29 @@
+.section {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 20px auto 0;
+}
+
+.title {
+  margin-bottom: 36px;
+
+  text-align: center;
+
+  font-size: 34px;
+  font-weight: 700;
+
+  color: var(--text);
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+.section {
+    padding-bottom: 72px;
+}
