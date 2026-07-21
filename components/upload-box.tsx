@@ -18,7 +18,7 @@ export default function UploadBox({
 
 
   const [isDragging, setIsDragging] = useState(false);
-const [file, setFile] = useState<File | null>(null);
+const [files, setFiles] = useState<File[]>([]);
 
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -32,21 +32,36 @@ const handleDragLeave = () => {
   setIsDragging(false);
 };
 
+const validateFiles = (files: File[]) => {
+  if (files.length <= 1) return true;
+
+  const firstType = detectFileType(files[0]);
+
+  return files.every(
+    (file) => detectFileType(file) === firstType
+  );
+};
+
 const handleDrop = (e: React.DragEvent) => {
   e.preventDefault();
   setIsDragging(false);
 
-  const droppedFile = e.dataTransfer.files[0];
+const droppedFiles = Array.from(e.dataTransfer.files);
 
- if (droppedFile) {
-  setFile(droppedFile);
-
-  const detected = detectFileType(droppedFile);
-
-  setFileType(detected);
-
-  setRecommendedTools(getRecommendations(detected));
+if (!validateFiles(droppedFiles)) {
+  alert("Please upload files of the same type.");
+  return;
 }
+
+if (droppedFiles.length === 0) return;
+
+setFiles(droppedFiles);
+
+const detected = detectFileType(droppedFiles[0]);
+
+setFileType(detected);
+
+setRecommendedTools(getRecommendations(detected));
 
 };
 
@@ -76,17 +91,22 @@ const detectFileType = (file: File) => {
 const handleFileChange = (
   e: React.ChangeEvent<HTMLInputElement>
 ) => {
-  const selectedFile = e.target.files?.[0];
+const selectedFiles = Array.from(e.target.files ?? []);
 
-  if (selectedFile) {
-    setFile(selectedFile); // or droppedFile
+if (!validateFiles(selectedFiles)) {
+  alert("Please upload files of the same type.");
+  return;
+}
 
-const detected = detectFileType(selectedFile); // or droppedFile
+if (selectedFiles.length === 0) return;
+
+setFiles(selectedFiles);
+
+const detected = detectFileType(selectedFiles[0]);
 
 setFileType(detected);
 
 setRecommendedTools(getRecommendations(detected));
-  }
 };
 
   return (
@@ -104,15 +124,30 @@ setRecommendedTools(getRecommendations(detected));
   strokeWidth={1.5}
 />
 
-  <h3>
-  {file ? file.name : "Drop your file here"}
+<h3>
+  {files.length > 0
+    ? `${files.length} file${files.length > 1 ? "s" : ""} uploaded`
+    : "Drop your files here"}
 </h3>
 
-  <p>
-  {file
-    ? `${(file.size / 1024 / 1024).toFixed(2)} MB`
-    : <>or <span>click to browse</span></>}
+<p>
+  {files.length > 0 ? (
+    <>
+      Total Size:{" "}
+      {(
+        files.reduce((total, file) => total + file.size, 0) /
+        1024 /
+        1024
+      ).toFixed(2)}{" "}
+      MB
+    </>
+  ) : (
+    <>
+      or <span>click to browse</span>
+    </>
+  )}
 </p>
+
 </button>
 <input
   ref={inputRef}

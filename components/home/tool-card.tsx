@@ -4,14 +4,14 @@ import { ReactNode } from "react";
 type ToolCardProps = {
   icon: ReactNode;
   title: string;
-  count: number;
+  description: string;
   color: string;
 };
 
 export default function ToolCard({
   icon,
   title,
-  count,
+  description,
   color
 }: ToolCardProps) {
   return (
@@ -25,7 +25,7 @@ export default function ToolCard({
 
       <h3>{title}</h3>
 
-      <p>{count} tools →</p>
+      <p>{description}</p>
     </button>
   );
 }
