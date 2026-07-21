@@ -54,6 +54,20 @@
     transition: transform .2s ease;
 }
 
-.upload:hover .icon {
-    transform: translateY(-2px);
+.box:hover .icon {
+  transform: translateY(-2px);
+} 
+
+.dragging {
+  border-color: var(--primary);
+
+  background: var(--card-hover);
+
+  transform: scale(1.02);
+
+  box-shadow: 0 16px 40px rgba(79, 124, 255, 0.12);
+}
+
+.dragging .icon {
+  transform: translateY(-4px) scale(1.08);
 }

@@ -11,10 +11,24 @@ import {
 
 import ToolCard from "./tool-card";
 
-export default function ToolsGrid() {
+import type { Tool } from "@/lib/recommendations";
+interface ToolsGridProps {
+  recommendedTools: Tool[];
+  fileType: string;
+}
+
+export default function ToolsGrid({
+  recommendedTools,
+  fileType,
+
+}: ToolsGridProps) {
   return (
     <section className={styles.section}>
-      <h2 className={styles.title}>Popular Tools</h2>
+      <h2 className={styles.title}>
+  {recommendedTools.length > 0
+    ? `Recommended for ${fileType}`
+    : "Popular Tools"}
+</h2>
 
       <div className={styles.grid}>
         <ToolCard
