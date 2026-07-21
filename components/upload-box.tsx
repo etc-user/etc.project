@@ -7,18 +7,22 @@ import { getRecommendations } from "@/lib/recommendations";
 import type { Tool } from "@/lib/recommendations";
 
 interface UploadBoxProps {
+  files: File[];
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+
   setRecommendedTools: React.Dispatch<React.SetStateAction<Tool[]>>;
   setFileType: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function UploadBox({
+  files,
+  setFiles,
   setRecommendedTools,
   setFileType,
 }: UploadBoxProps) {
 
 
   const [isDragging, setIsDragging] = useState(false);
-const [files, setFiles] = useState<File[]>([]);
 
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -88,6 +92,12 @@ const detectFileType = (file: File) => {
   return "unknown";
 };
 
+const getFileLabel = (file: File, count: number) => {
+  const extension = file.name.split(".").pop()?.toUpperCase() || "FILE";
+
+  return `${extension} file${count > 1 ? "s" : ""}`;
+};
+
 const handleFileChange = (
   e: React.ChangeEvent<HTMLInputElement>
 ) => {
@@ -126,7 +136,7 @@ setRecommendedTools(getRecommendations(detected));
 
 <h3>
   {files.length > 0
-    ? `${files.length} file${files.length > 1 ? "s" : ""} uploaded`
+    ? `${files.length} ${getFileLabel(files[0], files.length)} ready`
     : "Drop your files here"}
 </h3>
 

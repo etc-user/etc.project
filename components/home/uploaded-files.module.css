@@ -1,0 +1,96 @@
+.wrapper {
+  width: 100%;
+  max-width: 760px;
+  margin: 36px auto;
+}
+
+.wrapper h2 {
+  margin-bottom: 18px;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.file {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 20px;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  background: var(--card);
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+
+  animation: slideIn .35s ease;
+}
+
+.file:hover {
+  background: var(--card-hover);
+  border-color: var(--primary);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 24px rgba(79,124,255,.08);
+}
+
+.file p {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.status {
+  color: #22c55e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.delete {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-secondary);
+
+  transition: .2s ease;
+}
+
+.delete:hover {
+  color: #ef4444;
+  transform: scale(1.12);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

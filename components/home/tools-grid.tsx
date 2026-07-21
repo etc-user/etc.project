@@ -34,14 +34,15 @@ export default function ToolsGrid({
 
   <div className={styles.grid}>
     {recommendedTools.length > 0 ? (
-  recommendedTools.map((tool) => (
+ recommendedTools.map((tool, index) => (
   <ToolCard
-    key={tool.title}
-    icon={icons[tool.icon as keyof typeof icons]}
-    title={tool.title}
-    description={tool.description}
-    color="#4F7CFF"
-  />
+  key={tool.title}
+  icon={icons[tool.icon as keyof typeof icons]}
+  title={tool.title}
+  description={tool.description}
+  color="#4F7CFF"
+  delay={index}
+/>
 ))
 ) : (
   <>

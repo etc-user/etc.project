@@ -1,18 +1,35 @@
 @import "tailwindcss";
 
 :root {
+  /* Light Theme */
+
   --background: #FAFBFC;
   --foreground: #121212;
 
   --card: #F5F7FA;
+  --card-hover: #ECEFF3;
 
   --text: #121212;
   --text-secondary: #5F6368;
 
   --primary: #4F7CFF;
 
-  --border: rgba(18, 18, 18, 0.08);
-  --card-hover: #ECEFF3;
+  --border: rgba(18,18,18,.08);
+}
+
+.dark {
+  --background: #0E1116;
+  --foreground: #F8FAFC;
+
+  --card: #161B22;
+  --card-hover: #1D242D;
+
+  --text: #F8FAFC;
+  --text-secondary: #9AA4B2;
+
+  --primary: #6EA8FE;
+
+  --border: rgba(255,255,255,.08);
 }
 
 * {

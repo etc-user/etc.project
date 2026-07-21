@@ -6,26 +6,41 @@ type ToolCardProps = {
   title: string;
   description: string;
   color: string;
+  href?: string;
+  delay?: number;
 };
 
 export default function ToolCard({
   icon,
   title,
   description,
-  color
+  color,
+  delay = 0,
+  
 }: ToolCardProps) {
   return (
-    <button className={styles.card}>
-     <div
-  className={styles.icon}
-  style={{ color }}
+    <button
+  className={styles.card}
+  style={{
+    animationDelay: `${delay * 70}ms`,
+  }}
 >
-  {icon}
-</div>
+      <div
+        className={styles.icon}
+        style={{ color }}
+      >
+        {icon}
+      </div>
 
-      <h3>{title}</h3>
+      <div className={styles.content}>
+        <h3>{title}</h3>
 
-      <p>{description}</p>
+        <p>{description}</p>
+
+        <span className={styles.link}>
+          Open Tool →
+        </span>
+      </div>
     </button>
   );
 }

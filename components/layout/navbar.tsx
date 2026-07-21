@@ -1,8 +1,8 @@
-import { Sun } from "lucide-react";
+
 import Logo from "../logo";
 import Container from "./container";
 import styles from "./navbar.module.css";
-
+import ThemeToggle from "./theme-toggle";
 export default function Navbar() {
   return (
     <header className={styles.header}>
@@ -11,12 +11,10 @@ export default function Navbar() {
           <Logo priority />
 
           <div className={styles.right}>
-            <button
-  className={styles.themeButton}
-  aria-label="Toggle theme"
->
-  <Sun size={18} strokeWidth={2} />
-</button>
+
+          <ThemeToggle />
+
+
 
             <button className={styles.signIn}>
               Sign in
