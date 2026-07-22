@@ -136,7 +136,7 @@ setRecommendedTools(getRecommendations(detected));
 
 <h3>
   {files.length > 0
-    ? `${files.length} ${getFileLabel(files[0], files.length)} ready`
+    ? `${files.length} ${getFileLabel(files[0], files.length)} Ready to Process`
     : "Drop your files here"}
 </h3>
 

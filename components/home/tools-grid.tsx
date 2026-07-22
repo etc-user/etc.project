@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import styles from "./tools-grid.module.css";
 import {
   FileText,
@@ -24,71 +26,92 @@ export default function ToolsGrid({
   recommendedTools,
   fileType,
 }: ToolsGridProps) {
+  
+  const [showRecommendations, setShowRecommendations] = useState(false);
+
+useEffect(() => {
+  if (recommendedTools.length > 0) {
+    setShowRecommendations(false);
+
+    const timer = setTimeout(() => {
+      setShowRecommendations(true);
+    }, 180);
+
+    return () => clearTimeout(timer);
+  } else {
+    setShowRecommendations(false);
+  }
+}, [recommendedTools]);
   return (
-    <section className={styles.section}>
-      <h2 className={styles.title}>
-  {recommendedTools.length > 0
-    ? `Recommended for ${fileType}`
-    : "Popular Tools"}
-</h2>
+  <section className={styles.section}>
+    <h2 className={styles.title}>
+      {showRecommendations
+        ? `Recommended for ${fileType}`
+        : "Popular Tools"}
+    </h2>
 
-  <div className={styles.grid}>
-    {recommendedTools.length > 0 ? (
- recommendedTools.map((tool, index) => (
-  <ToolCard
-  key={tool.title}
-  icon={icons[tool.icon as keyof typeof icons]}
-  title={tool.title}
-  description={tool.description}
-  color="#4F7CFF"
-  delay={index}
-/>
-))
-) : (
-  <>
-    <ToolCard
-  icon={<FileText size={30} strokeWidth={1.8} />}
-  title="PDF"
-  description="Compress, merge & convert"
-  color="#4F7CFF"
-/>
-    <ToolCard
-      icon={<ImageIcon size={30} strokeWidth={1.8} />}
-      title="Images"
-      description="Edit & optimize images"
-      color="#F59E0B"
-    />
+    <div
+      className={`${styles.grid} ${
+        showRecommendations ? styles.fadeIn : ""
+      }`}
+    >
+      {showRecommendations ? (
+        recommendedTools.map((tool, index) => (
+          <ToolCard
+            key={tool.title}
+            icon={icons[tool.icon as keyof typeof icons]}
+            title={tool.title}
+            description={tool.description}
+            color="#4F7CFF"
+            delay={index}
+          />
+        ))
+      ) : (
+        <>
+          <ToolCard
+            icon={<FileText size={30} strokeWidth={1.8} />}
+            title="PDF"
+            description="Compress, merge & convert"
+            color="#4F7CFF"
+          />
 
-    <ToolCard
-      icon={<Video size={30} strokeWidth={1.8} />}
-      title="Video"
-      description="Convert & compress videos"
-      color="#EF4444"
-    />
+          <ToolCard
+            icon={<ImageIcon size={30} strokeWidth={1.8} />}
+            title="Images"
+            description="Edit & optimize images"
+            color="#F59E0B"
+          />
 
-    <ToolCard
-      icon={<Music size={30} strokeWidth={1.8} />}
-      title="Audio"
-      description="Convert & edit audio"
-      color="#10B981"
-    />
+          <ToolCard
+            icon={<Video size={30} strokeWidth={1.8} />}
+            title="Video"
+            description="Convert & compress videos"
+            color="#EF4444"
+          />
 
-    <ToolCard
-      icon={<Archive size={30} strokeWidth={1.8} />}
-      title="Archive"
-      description="ZIP & extract files"
-      color="#8B5CF6"
-    />
+          <ToolCard
+            icon={<Music size={30} strokeWidth={1.8} />}
+            title="Audio"
+            description="Convert & edit audio"
+            color="#10B981"
+          />
 
-    <ToolCard
-      icon={<Grid2x2 size={30} strokeWidth={1.8} />}
-      title="More"
-      description="Explore all tools"
-      color="#6B7280"
-    />
-  </>
-)}
-      </div>
-    </section>
-  );
+          <ToolCard
+            icon={<Archive size={30} strokeWidth={1.8} />}
+            title="Archive"
+            description="ZIP & extract files"
+            color="#8B5CF6"
+          />
+
+          <ToolCard
+            icon={<Grid2x2 size={30} strokeWidth={1.8} />}
+            title="More"
+            description="Explore all tools"
+            color="#6B7280"
+          />
+        </>
+      )}
+    </div>
+  </section>
+);
 }

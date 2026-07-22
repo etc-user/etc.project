@@ -22,7 +22,7 @@ const removeFile = (name: string) => {
 
   return (
     <section className={styles.wrapper}>
-      <h2>Uploaded Files</h2>
+      <h2>Ready to Process</h2>
 
       <div className={styles.list}>
         {files.map((file) => (

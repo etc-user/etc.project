@@ -9,7 +9,7 @@
 .box {
   width: 100%;
   max-width: 760px;
-  height: 240px;
+  height: 260px;
 
   border: 1px dashed var(--border);
   border-radius: 20px;
