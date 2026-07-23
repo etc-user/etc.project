@@ -1,0 +1,55 @@
+.wrapper {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-3);
+
+    margin-bottom: var(--space-8);
+
+}
+
+.left {
+
+    text-align: left;
+
+}
+
+.center {
+
+    text-align: center;
+
+    align-items: center;
+
+}
+
+.title {
+
+    margin: 0;
+
+    font-size: clamp(36px, 5vw, 56px);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    color: var(--text);
+
+    letter-spacing: -0.03em;
+
+}
+
+.subtitle {
+
+    margin: 0;
+
+    max-width: 700px;
+
+    color: var(--text-secondary);
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+}

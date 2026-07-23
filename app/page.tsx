@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 
-import Navbar from "@/components/layout/navbar";
-import Hero from "@/components/hero";
-import UploadBox from "@/components/upload-box";
-import UploadedFiles from "@/components/home/uploaded-files";
-import ToolsGrid from "@/components/home/tools-grid";
-import HomeLayout from "@/components/home/home-layout";
+import Navbar from "@/components/layout/Navbar";
+import Hero from "@/components/Hero/hero";
+import UploadBox from "@/components/UploadBox/upload-box";
+import HomeLayout from "@/components/Landing/home-layout";
+import ToolsGrid from "@/components/Landing/tools-grid";
+import UploadedFiles from "@/components/Landing/uploaded-files";
 
 import type { Tool } from "@/lib/recommendations";
 

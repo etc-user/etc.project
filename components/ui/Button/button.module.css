@@ -1,0 +1,89 @@
+.button {
+  border: none;
+
+  border-radius: var(--radius-md);
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition),
+    opacity var(--transition),
+    box-shadow var(--transition);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--space-2);
+
+  user-select: none;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.secondary {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--card-hover);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--card-hover);
+}
+
+.danger {
+  background: var(--danger);
+  color: white;
+}
+
+.sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: 14px;
+}
+
+.md {
+  padding: var(--space-3) var(--space-5);
+  font-size: 15px;
+}
+
+.lg {
+  padding: var(--space-4) var(--space-6);
+  font-size: 16px;
+}
+
+.fullWidth {
+  width: 100%;
+}

@@ -1,8 +1,8 @@
 
-import Logo from "../logo";
-import Container from "./container";
+import Logo from "@/components/Logo";
+import Container from "@/components/layout/Container";
 import styles from "./navbar.module.css";
-import ThemeToggle from "./theme-toggle";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 export default function Navbar() {
   return (
     <header className={styles.header}>

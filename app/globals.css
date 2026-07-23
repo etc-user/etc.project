@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  /* Light Theme */
+
+  /* Colors */
 
   --background: #FAFBFC;
   --foreground: #121212;
@@ -13,11 +14,62 @@
   --text-secondary: #5F6368;
 
   --primary: #4F7CFF;
+  --primary-hover: #3B6EFF;
+
+  --success: #22C55E;
+  --danger: #EF4444;
+  --warning: #F59E0B;
 
   --border: rgba(18,18,18,.08);
+
+  /* Radius */
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Spacing */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Shadows */
+
+  --shadow-sm:
+    0 2px 8px rgba(0,0,0,.04);
+
+  --shadow-md:
+    0 10px 30px rgba(0,0,0,.08);
+
+  --shadow-lg:
+    0 20px 60px rgba(0,0,0,.12);
+
+  /* Layout */
+
+  --container: 1280px;
+
+  --navbar-height: 80px;
+
+  /* Animation */
+
+  --transition-fast: .15s ease;
+
+  --transition: .2s ease;
+
+  --transition-slow: .35s ease;
 }
 
 .dark {
+
   --background: #0E1116;
   --foreground: #F8FAFC;
 
@@ -28,8 +80,10 @@
   --text-secondary: #9AA4B2;
 
   --primary: #6EA8FE;
+  --primary-hover: #90BFFF;
 
   --border: rgba(255,255,255,.08);
+
 }
 
 * {
@@ -54,11 +108,4 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-}
-.container {
-  width: 100%;
-  max-width: 1280px;
-
-  margin: 0 auto;
-  padding: 0 40px;
 }

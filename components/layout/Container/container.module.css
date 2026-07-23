@@ -1,0 +1,21 @@
+.container {
+
+    width: 100%;
+
+    max-width: var(--container);
+
+    margin-inline: auto;
+
+    padding-inline: var(--space-7);
+
+}
+
+@media (max-width: 768px) {
+
+.container {
+
+    padding-inline: var(--space-5);
+
+}
+
+}
