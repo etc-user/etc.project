@@ -1,12 +1,9 @@
 import styles from "./section.module.css";
 
 type Props = {
-  title: string;
-
+  title?: string;
   description?: string;
-
   children: React.ReactNode;
-
   className?: string;
 };
 
@@ -25,17 +22,19 @@ export default function Section({
         .filter(Boolean)
         .join(" ")}
     >
- {title && (
-  <div className={styles.header}>
-    <h2 className={styles.title}>{title}</h2>
+      {title && (
+        <div className={styles.header}>
+          <h2 className={styles.title}>
+            {title}
+          </h2>
 
-    {description && (
-      <p className={styles.description}>
-        {description}
-      </p>
-    )}
-  </div>
-)}
+          {description && (
+            <p className={styles.description}>
+              {description}
+            </p>
+          )}
+        </div>
+      )}
 
       <div className={styles.content}>
         {children}
